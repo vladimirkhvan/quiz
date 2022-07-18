@@ -1,0 +1,65 @@
+@import '../../scss/mixins/modalBox';
+@import '../../scss/variables';
+
+.quiz{
+    @include modalBox(1200px);
+    padding: 50px;
+
+    margin: 20px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    header{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding-bottom: 20px;
+
+        margin-bottom: 20px;
+
+        border-bottom: 1px solid rgba($color: $accent, $alpha: 0.1);
+
+        a{
+            outline: 1px solid $accent;
+            padding: 8px 14px;
+            border-radius: 10px;
+
+            transition: padding 0.1s ease-in-out, margin 0.1s ease-in-out, background-color 0.05s ease-in-out;
+
+            .arrow{
+                display: inline-block;
+                transition: transform 0.1s ease-in-out, color 0.1s ease-in-out;
+            }
+
+            &:hover{
+                padding-left: 20px;
+                margin-left: -6px;
+                background-color: $accent;
+
+                .arrow{
+                    transform: translateX(-6px);
+                    color: $white;
+                }
+            }
+
+            &:active{
+                box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 6px 0px inset, rgba(0, 0, 0, 0.05) -3px -3px 6px 1px inset;
+            }
+        }
+
+        h2{
+            font-family: $heading-font;
+        }
+
+        time{
+            font-size: 18px;
+            font-weight: 600;
+            color: $font-color;
+        }
+    }
+}
