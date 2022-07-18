@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './Question.module.scss';
+
 interface PropsQuestion {
     category: string;
     correct_answer: string;
@@ -15,7 +17,7 @@ export class Question extends React.Component<PropsQuestion> {
     constructor(props: PropsQuestion) {
         super(props);
         this.answers = [...this.props.incorrect_answers, this.props.correct_answer].map(
-            (answer) => <li key={answer}>{this.htmlToText(answer)}</li>,
+            (answer) => <li key={answer} className={styles.answer}>{this.htmlToText(answer)}</li>,
         );
     }
 
@@ -28,8 +30,8 @@ export class Question extends React.Component<PropsQuestion> {
 
     render(): React.ReactNode {
         return (
-            <div>
-                <h3>{this.htmlToText(this.props.question)}</h3>
+            <div className={styles.questionBlock}>
+                <h3 className={styles.question}>{this.htmlToText(this.props.question)}</h3>
 
                 <ul>{this.answers}</ul>
             </div>

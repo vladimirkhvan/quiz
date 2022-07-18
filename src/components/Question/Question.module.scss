@@ -1,0 +1,48 @@
+@import '../../scss/variables';
+@import '../../scss/mixins/noSelect';
+
+.questionBlock {
+    margin-bottom: 20px;
+
+    .question {
+        margin-bottom: 12px;
+        line-height: 18px;
+    }
+
+    .answer {
+        @include noselect();
+        position: relative;
+
+        width: fit-content;
+        padding: 8px 16px;
+
+        border: 1px solid $accent;
+        border-radius: 10px;
+
+        margin-bottom: 5px;
+
+        cursor: pointer;
+
+        transition: padding 0.1s ease-in-out, background-color 0.1s ease-in-out,
+            color 0.1s ease-in-out;
+
+        &:hover {
+            padding-left: 30px;
+            background-color: $accent;
+            color: $white;
+        }
+    }
+
+    .active {
+        &::before {
+            padding-left: 30px;
+            background-color: $accent;
+            color: $white;
+            content: '•';
+            font-size: 20px;
+            position: absolute;
+            left: 15px;
+            top: 4px;
+        }
+    }
+}
