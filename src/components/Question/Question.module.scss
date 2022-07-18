@@ -34,10 +34,10 @@
     }
 
     .active {
+        padding-left: 30px;
+        background-color: $accent;
+        color: $white;
         &::before {
-            padding-left: 30px;
-            background-color: $accent;
-            color: $white;
             content: '•';
             font-size: 20px;
             position: absolute;

@@ -17,11 +17,11 @@ export class Question extends React.Component<PropsQuestion> {
     constructor(props: PropsQuestion) {
         super(props);
         this.answers = [...this.props.incorrect_answers, this.props.correct_answer].map(
-            (answer) => <li key={answer} className={styles.answer}>{this.htmlToText(answer)}</li>,
+            (answer) => <li key={answer} className={`${styles.answer}`}>{this.htmlToText(answer)}</li>,
         );
     }
 
-    htmlToText = (html) => {
+    htmlToText = (html:string) => {
         let tempDivElement = document.createElement("div");
         tempDivElement.innerHTML = html;
 
