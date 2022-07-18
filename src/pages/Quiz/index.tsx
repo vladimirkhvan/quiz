@@ -8,10 +8,12 @@ import { Question } from '../../components/Question';
 
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { fetchQuestions } from '../../redux/Questions/asyncActions';
+import { Status } from '../../redux/Questions/types';
+import Skeleton from '../../components/Skeleton';
 
 export const Quiz: React.FC = () => {
     const dispatch = useAppDispatch();
-    const questions = useAppSelector((state) => state.questions.data);
+    const { data: questions, status } = useAppSelector((state) => state.questions);
 
     React.useEffect(() => {
         dispatch(fetchQuestions());
@@ -27,10 +29,10 @@ export const Quiz: React.FC = () => {
                 <time>10:00</time>
             </header>
 
-            <main>
-                {questions.map((obj) => (
-                    <Question key={obj.question} {...obj} />
-                ))}
+            <main className={styles.main}>
+                {status === Status.PENDING
+                    ? [...Array(4)].map((element, index) => <Skeleton key={index} />)
+                    : questions.map((obj) => <Question key={obj.question} {...obj} />)}
             </main>
 
             <Button placeholder="Submit" link="/" />
