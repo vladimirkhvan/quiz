@@ -33,6 +33,14 @@
         }
     }
 
+    .noHover{
+        &:hover{
+            padding-left: 16px;
+            background-color: transparent;
+            color: black;
+        }
+    }
+
     .active {
         padding-left: 30px;
         background-color: $accent;
@@ -40,6 +48,40 @@
         &::before {
             content: '•';
             font-size: 20px;
+            position: absolute;
+            left: 15px;
+            top: 4px;
+        }
+    }
+
+    .correct{
+        padding-left: 40px;
+        background-color: $success;
+        &:hover {
+            padding-left: 40px;
+            background-color: $success;
+        }
+        &::before {
+            content: ':>';
+            font-size: 20px;
+            font-weight: 600;
+            position: absolute;
+            left: 15px;
+            top: 4px;
+        }
+    }
+
+    .incorrect{
+        padding-left: 40px;
+        background-color: $fail;
+        &:hover {
+            padding-left: 40px;
+            background-color: $fail;
+        }
+        &::before {
+            content: ':<';
+            font-size: 20px;
+            font-weight: 600;
             position: absolute;
             left: 15px;
             top: 4px;
