@@ -1,4 +1,5 @@
 @import '../../scss/mixins/modalBox';
+@import '../../scss/mixins/noSelect';
 @import '../../scss/variables';
 
 .quiz{
@@ -60,6 +61,26 @@
             font-size: 18px;
             font-weight: 600;
             color: $font-color;
+        }
+    }
+    
+    .score{
+        @include noselect;
+        font-size: 24px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        
+        padding: 15px 20px;
+
+        border: 1px solid $accent;
+
+        border-radius: 15px;
+
+        transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+
+        &:hover{
+            color: $white;
+            background-color: $accent;
         }
     }
 
