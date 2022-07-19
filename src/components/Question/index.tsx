@@ -1,4 +1,7 @@
 import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+
+import { setAnswer } from '../../redux/Answers/slice';
 
 import styles from './Question.module.scss';
 
@@ -11,30 +14,66 @@ interface PropsQuestion {
     type: string;
 }
 
-export class Question extends React.Component<PropsQuestion> {
-    answers: JSX.Element[];
+export const Question: React.FC<PropsQuestion> = ({
+    category,
+    correct_answer,
+    difficulty,
+    incorrect_answers,
+    question,
+    type,
+}) => {
+    const dispatch = useAppDispatch();
 
-    constructor(props: PropsQuestion) {
-        super(props);
-        this.answers = [...this.props.incorrect_answers, this.props.correct_answer].map(
-            (answer) => <li key={answer} className={`${styles.answer}`}>{this.htmlToText(answer)}</li>,
-        );
-    }
+    const completingStatus = useAppSelector((state) => state.answers.completingStatus);
 
-    htmlToText = (html:string) => {
-        let tempDivElement = document.createElement("div");
+    const htmlToText = (html: string) => {
+        let tempDivElement = document.createElement('div');
         tempDivElement.innerHTML = html;
 
-        return tempDivElement.textContent || tempDivElement.innerText || "";
+        return tempDivElement.textContent || tempDivElement.innerText || '';
+    };
+
+    const [chosenAnswer, setChosenAnswer] = React.useState<string>('');
+
+    function chooseAnswer(answer: string) {
+        setChosenAnswer(answer);
+        dispatch(setAnswer({ answer, question }));
     }
 
-    render(): React.ReactNode {
+    const answers = [...incorrect_answers, correct_answer].map((answer) => {
+        let style: string;
+
+        if (completingStatus === 'completed') {
+            style = `${styles.answer} ${styles.noHover} `;
+
+            if (chosenAnswer === answer && answer !== correct_answer) {
+                style += ` ${styles.incorrect} `;
+            }
+
+            if (answer === correct_answer) {
+                style += ` ${styles.correct} `;
+            }
+        }
+
+        if (completingStatus === 'processing') {
+            style = `${styles.answer} ` + (chosenAnswer === answer ? `${styles.active}` : '');
+        }
+
         return (
-            <div className={styles.questionBlock}>
-                <h3 className={styles.question}>{this.htmlToText(this.props.question)}</h3>
-
-                <ul>{this.answers}</ul>
-            </div>
+            <li
+                key={answer}
+                className={style}
+                onClick={completingStatus === 'completed' ? () => {} : () => chooseAnswer(answer)}>
+                {htmlToText(answer)}
+            </li>
         );
-    }
-}
+    });
+
+    return (
+        <div className={styles.questionBlock}>
+            <h3 className={styles.question}>{htmlToText(question)}</h3>
+
+            <ul>{answers}</ul>
+        </div>
+    );
+};
