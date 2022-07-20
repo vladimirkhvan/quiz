@@ -7,7 +7,7 @@ import { TType } from '../../redux/Filter/types';
 
 import styles from './TypeSelector.module.scss';
 
-export const TypeSelector = () => {
+export const TypeSelector:React.FC = () => {
     const typeDictionary = ['boolean', 'multiple'];
 
     const type = useAppSelector((state) => state.filter.type);

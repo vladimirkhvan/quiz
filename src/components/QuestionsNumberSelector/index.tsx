@@ -5,7 +5,7 @@ import { setNumberOfQuestions } from '../../redux/Filter/slice';
 
 import styles from './QuestionsNumberSelector.module.scss';
 
-export const QuestionsNumberSelector = () => {
+export const QuestionsNumberSelector:React.FC = () => {
     const dispatch = useAppDispatch();
     const [inputState, setInputState] = React.useState('');
 

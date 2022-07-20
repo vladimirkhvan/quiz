@@ -3,7 +3,7 @@ import styles from './Intro.module.scss';
 
 import { Button } from '../../components/Button';
 
-export const Intro = () => {
+export const Intro:React.FC = () => {
     return (
         <div className={styles.intro}>
             <h1 className={styles.title}>Quiz. What?</h1>

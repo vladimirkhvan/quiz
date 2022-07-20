@@ -8,14 +8,14 @@ interface PropsInfoBlock {
     img?: string;
 }
 
-export class InfoBlock extends React.Component<PropsInfoBlock> {
-    render(): React.ReactNode  {
-        return (
-            <div className={styles.info}>
-                {this.props.img !== undefined && <img src={this.props.img} alt={this.props.title}/>}
-                <h1>{this.props.title}</h1>
-                <p>{this.props.description !== undefined && this.props.description}</p>
-            </div>
-        );
-    }
-}
+export const InfoBlock: React.FC<PropsInfoBlock> = ({ title, description, img }) => {
+    return (
+        <div className={styles.info}>
+            {img !== undefined && <img src={img} alt={title} />}
+            <h1>{title}</h1>
+            <p>{description !== undefined && description}</p>
+        </div>
+    );
+};
+
+export default InfoBlock;
