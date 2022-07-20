@@ -21,6 +21,10 @@ export const questionsSlice = createSlice({
         setQuestions(state, action: PayloadAction<TQuestion[]>) {
             state.data = action.payload;
         },
+        resetQuestions(state) {
+            state.data = [];
+            state.status = Status.PENDING;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchQuestions.pending, (state) => {
@@ -38,5 +42,5 @@ export const questionsSlice = createSlice({
     },
 });
 
-export const { setQuestions } = questionsSlice.actions;
+export const { setQuestions, resetQuestions } = questionsSlice.actions;
 export default questionsSlice.reducer;
