@@ -16,6 +16,12 @@
     .list {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+
+        @media screen and (max-width: 1200px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
         .item {
             @include noselect;
             width: 300px;
@@ -40,6 +46,10 @@
             transition: box-shadow 0.1s ease-in-out, font-size 0.1s ease-in-out,
                 transform 0.1s ease-in-out;
 
+            @media screen and (max-width: 1200px) {
+                width:100%;
+            }
+
             .number {
                 font-size: 58px;
                 margin-right: 20px;
@@ -62,6 +72,16 @@
 
                 top: 30px;
                 left: 90px;
+
+                @media screen and (max-width: 1200px) {
+                    top: 12%;
+                    left: 43%;
+                }
+
+                @media screen and (max-width: 500px) {
+                    top: 12%;
+                    left: 33%;
+                }
             }
 
             &:hover {

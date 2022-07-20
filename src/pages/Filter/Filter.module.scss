@@ -6,17 +6,27 @@
     @include modalBox(1200px);
     padding: 50px;
 
+    @media screen and (max-width: 1250px) {
+        width: 95%;
+    }
+
     header {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
 
+        position: relative;
+
         padding-bottom: 20px;
 
         margin-bottom: 20px;
 
         border-bottom: 1px solid rgba($color: $accent, $alpha: 0.1);
+
+        @media screen and (max-width: 450px) {
+            flex-direction: column;
+        }
 
         .arrowContainer {
             outline: 1px solid $accent;
@@ -25,6 +35,12 @@
 
             transition: padding 0.1s ease-in-out, margin 0.1s ease-in-out,
                 background-color 0.05s ease-in-out;
+
+            @media screen and (max-width: 450px) {
+                position: absolute;
+                left: -30px;
+                top: -30px;
+            }
 
             .arrow {
                 display: inline-block;
@@ -53,13 +69,19 @@
             font-weight: 600;
             color: $font-color;
 
-            width: 70px;
+            @media screen and (max-width: 450px) {
+                display: none;
+            }
         }
     }
     .container {
         padding: 0 40px;
 
-        .button{
+        @media screen and (max-width: 1000px) {
+            padding: 0;
+        }
+
+        .button {
             display: flex;
             justify-content: center;
             align-items: center;

@@ -2,7 +2,7 @@
 @import '../../scss/mixins/noSelect';
 @import '../../scss/variables';
 
-.quiz{
+.quiz {
     @include modalBox(1200px);
     padding: 50px;
 
@@ -11,11 +11,17 @@
     align-items: center;
     flex-direction: column;
 
-    header{
+    @media screen and (max-width: 1250px) {
+        width: 95%;
+    }
+
+    header {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        position: relative;
 
         padding-bottom: 20px;
 
@@ -23,53 +29,69 @@
 
         border-bottom: 1px solid rgba($color: $accent, $alpha: 0.1);
 
-        a{
+        @media screen and (max-width: 450px) {
+            flex-direction: column;
+        }
+
+        a {
             outline: 1px solid $accent;
             padding: 8px 14px;
             border-radius: 10px;
 
-            transition: padding 0.1s ease-in-out, margin 0.1s ease-in-out, background-color 0.05s ease-in-out;
+            transition: padding 0.1s ease-in-out, margin 0.1s ease-in-out,
+                background-color 0.05s ease-in-out;
 
-            .arrow{
-                display: inline-block;
+            @media screen and (max-width: 450px) {
+                position: absolute;
+                left: -30px;
+                top: -30px;
+            }
+
+            .arrow {
+                display: block;
                 transition: transform 0.1s ease-in-out, color 0.1s ease-in-out;
             }
 
-            &:hover{
+            &:hover {
                 padding-left: 20px;
                 margin-left: -6px;
                 background-color: $accent;
 
-                .arrow{
+                .arrow {
                     transform: translateX(-6px);
                     color: $white;
                 }
             }
 
-            &:active{
-                box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 6px 0px inset, rgba(0, 0, 0, 0.05) -3px -3px 6px 1px inset;
+            &:active {
+                box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 6px 0px inset,
+                    rgba(0, 0, 0, 0.05) -3px -3px 6px 1px inset;
             }
         }
 
-        h2{
+        h2 {
             font-family: $heading-font;
+
+            @media screen and (max-width: 450px) {
+                margin-bottom: 8px;
+            }
         }
 
-        time{
+        time {
             font-size: 18px;
             font-weight: 600;
             color: $font-color;
 
-            width: 70px
+            width: 70px;
         }
     }
-    
-    .score{
+
+    .score {
         @include noselect;
         font-size: 24px;
         margin-bottom: 20px;
         font-weight: 600;
-        
+
         padding: 15px 20px;
 
         border: 1px solid $accent;
@@ -78,13 +100,13 @@
 
         transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
 
-        &:hover{
+        &:hover {
             color: $white;
             background-color: $accent;
         }
     }
 
-    .main{
+    .main {
         display: flex;
         flex-direction: column;
         align-items: flex-start;

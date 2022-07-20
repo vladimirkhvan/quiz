@@ -2,7 +2,7 @@ import React from 'react';
 import ContentLoader from 'react-content-loader';
 
 const Skeleton: React.FC = () => {
-    const componentWidth:number = window.innerWidth > 1000 ? 800 : window.innerWidth;
+    const componentWidth:number = window.innerWidth > 1000 ? 800 : window.innerWidth - 100;
 
     return (<ContentLoader
         speed={2}
