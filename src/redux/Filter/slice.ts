@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TCategory, TDifficulty, TType } from './types';
 
-interface FilterState {
+export interface FilterState {
     category: TCategory;
     difficulty: TDifficulty;
     type: TType;
@@ -9,7 +9,7 @@ interface FilterState {
 }
 
 const initialState: FilterState = {
-    category: 'random',
+    category: 'Politics',
     difficulty: 'easy',
     type: 'boolean',
     numberOfQuestions: 5,

@@ -1,5 +1,5 @@
 export type TCategory =
-    | 'random'
+    | ''
     | 'Politics'
     | 'General Knowledge'
     | 'Entertainment  Books'
@@ -25,6 +25,6 @@ export type TCategory =
     | 'Entertainment  Japanese Anime & Manga'
     | 'Entertainment  Cartoon & Animations';
 
-export type TDifficulty = 'random' | 'easy' | 'medium' | 'hard';
+export type TDifficulty = '' | 'easy' | 'medium' | 'hard';
 
-export type TType = 'random' | 'multiple' | 'boolean'; 
+export type TType = '' | 'multiple' | 'boolean'; 
