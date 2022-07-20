@@ -80,12 +80,9 @@ export const Quiz: React.FC = () => {
             )}
 
             <main className={styles.main}>
-                {/* {status === Status.PENDING
+                {status === Status.PENDING
                     ? [...Array(4)].map((elem, index) => <Skeleton key={index} />)
-                    : questions.map((obj) => <Question key={obj.question} {...obj} />)} */}
-                {[...Array(4)].map((elem, index) => (
-                    <Skeleton key={index} />
-                ))}
+                    : questions.map((obj) => <Question key={obj.question} {...obj} />)}
                 {questions.length === 0 && status === Status.FULFILLED && (
                     <Navigate to="/quizNotFound" replace={true} />
                 )}
