@@ -1,0 +1,98 @@
+@import '../../scss/variables';
+@import '../../scss/mixins/modalBox';
+@import '../../scss/mixins/noSelect';
+
+.difficulty {
+    background-color: lighten($color: $accent, $amount: 10%);
+
+    padding: 30px 40px;
+
+    h2 {
+        color: $white;
+
+        margin-bottom: 10px;
+    }
+
+    .list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        .item {
+            @include noselect;
+            width: 300px;
+            height: 200px;
+
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: $white;
+
+            font-family: $heading-font;
+            font-size: 27px;
+            font-weight: 500;
+            padding-right: 20px;
+
+            cursor: pointer;
+
+            transition: box-shadow 0.1s ease-in-out, font-size 0.1s ease-in-out,
+                transform 0.1s ease-in-out;
+
+            .number {
+                font-size: 58px;
+                margin-right: 20px;
+
+                position: absolute;
+                top: 20px;
+                left: 40px;
+                color: $secondary;
+
+                transition: color 0.1s ease-in-out, font-size 0.1s ease-in-out;
+            }
+
+            .circle {
+                position: absolute;
+                z-index: -1;
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background-color: $secondary;
+
+                top: 30px;
+                left: 90px;
+            }
+
+            &:hover {
+                transform: translateY(-3px);
+
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+                    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+                    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+
+                .number {
+                    color: $font-color;
+                }
+            }
+        }
+
+        .active {
+            transform: translateY(-3px);
+
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+                rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+                rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+
+            font-size: 40px;
+
+            cursor: auto;
+
+            .number {
+                color: $font-color;
+
+                font-size: 37px;
+            }
+        }
+    }
+}
