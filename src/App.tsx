@@ -7,6 +7,7 @@ import Filter from './pages/Filter';
 import { Intro } from './pages/Intro';
 import { NotFound } from './pages/NotFound';
 import { Quiz } from './pages/Quiz';
+import { QuizNotFound } from './pages/QuizNotFound';
 
 class App extends React.Component {
     render() {
@@ -17,6 +18,7 @@ class App extends React.Component {
                         <Route path="" element={<Intro />} />
                         <Route path="filter" element={<Filter />} />
                         <Route path="quiz" element={<Quiz />} />
+                        <Route path="quizNotFound" element={<QuizNotFound />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </div>
