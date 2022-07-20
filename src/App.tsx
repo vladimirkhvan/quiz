@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import styles from './App.module.scss';
 
+import Filter from './pages/Filter';
 import { Intro } from './pages/Intro';
 import { NotFound } from './pages/NotFound';
 import { Quiz } from './pages/Quiz';
@@ -14,6 +15,7 @@ class App extends React.Component {
                 <div className={styles.content}>
                     <Routes>
                         <Route path="" element={<Intro />} />
+                        <Route path="filter" element={<Filter />} />
                         <Route path="quiz" element={<Quiz />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>

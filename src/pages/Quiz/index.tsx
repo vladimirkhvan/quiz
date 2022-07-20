@@ -13,6 +13,7 @@ import { Status } from '../../redux/Questions/types';
 import { completeQuiz, clearAnswers } from '../../redux/Answers/slice';
 
 import Skeleton from '../../components/Skeleton';
+import Timer from '../../components/Timer';
 
 export const Quiz: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -21,7 +22,7 @@ export const Quiz: React.FC = () => {
 
     const [score, setScore] = React.useState(0);
 
-    const resultSign = score >= questions.length*0.8 ? ':S' : ':F';
+    const resultSign = score >= questions.length * 0.8 ? ':S' : ':F';
 
     function submitAnswers() {
         let score: number = 0;
@@ -36,7 +37,6 @@ export const Quiz: React.FC = () => {
 
     React.useEffect(() => {
         dispatch(fetchQuestions());
-
         return () => {
             dispatch(clearAnswers());
         };
@@ -45,14 +45,18 @@ export const Quiz: React.FC = () => {
     return (
         <div className={styles.quiz}>
             <header>
-                <Link to="/">
+                <Link to="/filter">
                     <span className={styles.arrow}>{'<-'}</span>
                 </Link>
                 <h2>{completingStatus === 'completed' ? resultSign : 'good luck.'}</h2>
-                <time>10:00</time>
+                {completingStatus === 'processing' ? <Timer time={60*10} /> : <time>0:00:00</time>}
             </header>
 
-            {completingStatus === 'completed' && <h1 className={styles.score}>{score} / {questions.length}</h1>}
+            {completingStatus === 'completed' && (
+                <h1 className={styles.score}>
+                    {score} / {questions.length}
+                </h1>
+            )}
 
             <main className={styles.main}>
                 {status === Status.PENDING
