@@ -2,7 +2,7 @@
 
 # Quiz. What? V.1
 
-1. Select the amount of questions
+1. Select the number of questions
 2. Choose the category / difficulty / type
 3. Start the quiz
 4. Receive questions
@@ -12,8 +12,8 @@
 ## Tech details.<br/>
 
 <ul>
-  <li>Used CSS modules as frontend development methodology</li>
-  <li>Added responsiviness using media queries</li>
+  <li>Used CSS modules as a frontend development methodology</li>
+  <li>Added responsiveness using media queries</li>
   <li>Integrated Trivia API to use 8520 questions</li>
   <li>Implemented timer to control quiz time</li>
   <li>Developed user-friendly routing using React router</li>
@@ -41,7 +41,7 @@
    <code>cd {project folder path}</code>
 3. Run project using npm <br/>
    <code>npm start</code>
-4. Wait until new tab with address <code>localhost:3000</code> will be opened <br/>
+4. Wait until the new tab with the address <code>localhost:3000</code> will be opened<br/>
 5. Enjoy!<br/>
 
 ## Links
