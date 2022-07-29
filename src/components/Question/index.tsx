@@ -44,7 +44,7 @@ export const Question: React.FC<PropsQuestion> = ({
         let currentIndex = array.length;
         let randomIndex: number;
       
-        while (currentIndex != 0) {
+        while (currentIndex !== 0) {
       
           randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex--;
@@ -56,7 +56,9 @@ export const Question: React.FC<PropsQuestion> = ({
         return array;
       }
 
-    const answers = shuffle([...incorrect_answers, correct_answer]).map((answer) => {
+    const answers = React.useRef(shuffle([...incorrect_answers, correct_answer]));
+
+    const answersElements = answers.current.map((answer) => {
         let style: string;
 
         if (completingStatus === 'completed') {
@@ -89,7 +91,7 @@ export const Question: React.FC<PropsQuestion> = ({
         <div className={styles.questionBlock}>
             <h3 className={styles.question}>{htmlToText(question)}</h3>
 
-            <ul>{answers}</ul>
+            <ul>{answersElements}</ul>
         </div>
     );
 };
