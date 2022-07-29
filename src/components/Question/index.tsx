@@ -40,7 +40,23 @@ export const Question: React.FC<PropsQuestion> = ({
         dispatch(setAnswer({ answer, question }));
     }
 
-    const answers = [...incorrect_answers, correct_answer].map((answer) => {
+    function shuffle(array: string[]) {
+        let currentIndex = array.length;
+        let randomIndex: number;
+      
+        while (currentIndex != 0) {
+      
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+      
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+      
+        return array;
+      }
+
+    const answers = shuffle([...incorrect_answers, correct_answer]).map((answer) => {
         let style: string;
 
         if (completingStatus === 'completed') {
